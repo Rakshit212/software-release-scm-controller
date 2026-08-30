@@ -13,12 +13,9 @@ app = FastAPI(
 )
 
 # CORS configuration
-origins = [
-    "http://localhost",
-    "http://localhost:5173", # Vite default
-    "http://localhost:3000", # React default
-    "https://rakshit212.github.io", # GitHub Pages
-]
+import os
+cors_origin = os.getenv("CORS_ORIGIN", "*")
+origins = cors_origin.split(",") if cors_origin != "*" else ["*"]
 
 app.add_middleware(
     CORSMiddleware,
