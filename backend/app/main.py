@@ -14,8 +14,16 @@ app = FastAPI(
 
 # CORS configuration
 import os
-cors_origin = os.getenv("CORS_ORIGIN", "*")
-origins = cors_origin.split(",") if cors_origin != "*" else ["*"]
+cors_env = os.getenv("CORS_ORIGIN", "")
+# Always include GitHub Pages and local dev origins
+default_origins = [
+    "https://rakshit212.github.io",
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://localhost",
+]
+extra_origins = [o.strip() for o in cors_env.split(",") if o.strip()]
+origins = list(set(default_origins + extra_origins))
 
 app.add_middleware(
     CORSMiddleware,
