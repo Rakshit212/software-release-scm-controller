@@ -28,6 +28,6 @@ client = TestClient(app)
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Welcome to the Software Release & SCM Change Controller API"}
+    assert response.json() == {"message": "Welcome to the Software Release API. (Frontend not built)."}
 
 # We will add more tests later
