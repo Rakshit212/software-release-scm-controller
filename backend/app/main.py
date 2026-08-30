@@ -17,6 +17,7 @@ origins = [
     "http://localhost",
     "http://localhost:5173", # Vite default
     "http://localhost:3000", # React default
+    "https://rakshit212.github.io", # GitHub Pages
 ]
 
 app.add_middleware(
