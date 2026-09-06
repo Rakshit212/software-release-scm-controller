@@ -69,6 +69,7 @@ cors_env = os.getenv("CORS_ORIGIN", "")
 # Always include GitHub Pages and local dev origins
 default_origins = [
     "https://rakshit212.github.io",
+    "https://software-release-scm-controller.vercel.app",
     "http://localhost:5173",
     "http://localhost:3000",
     "http://localhost",
