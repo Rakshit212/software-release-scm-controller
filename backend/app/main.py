@@ -65,22 +65,13 @@ app = FastAPI(
 
 # CORS configuration
 import os
-cors_env = os.getenv("CORS_ORIGIN", "")
-# Always include GitHub Pages and local dev origins
-default_origins = [
-    "https://rakshit212.github.io",
-    "https://software-release-scm-controller.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "http://localhost",
-]
-extra_origins = [o.strip() for o in cors_env.split(",") if o.strip()]
-origins = list(set(default_origins + extra_origins))
 
+# Allow all origins so any frontend (Vercel, GitHub Pages, localhost) can connect.
+# This JWT-based API does not rely on cookies, so allow_credentials=False is safe.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
